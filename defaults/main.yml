@@ -1,0 +1,13 @@
+---
+# Networking/connection options
+mysql_exporter_server_port: 9104
+mysql_exporter_server_bind: 0.0.0.0
+mysql_exporter_server_password: false
+
+mysql_exporter_version: latest
+
+mysql_port: 3306
+mysql_ip: "{{ PrivateIp }}"
+mysql_user: ""
+mysql_pass: ""
+mysql_exporter_Datasource: "{{ mysql_user }}:{{ mysql_pass }}@({{ mysql_ip }}:{{ mysql_port }})/"

@@ -1,0 +1,32 @@
+---
+
+- name: copy mysql exporter script
+  template:
+    src: "mysql_exporter"
+    dest: /usr/local/bin/mysql_exporter
+    mode: 0755
+    owner: root
+    group: root
+
+- name: copy mysql exporter script
+  template:
+    src: "mysql_exporter.service"
+    dest: /etc/systemd/system/mysql_exporter.service
+    mode: 0644
+    owner: root
+    group: root
+
+- name: restart mysql exporter service is restarted
+  service:
+    name: mysql_exporter
+    state: restarted
+  changed_when: false
+
+- name: wait for mysql exporter to become ready
+  wait_for:
+    host: "{{ mysql_exporter_server_bind }}"
+    port: "{{ mysql_exporter_server_port }}"
+    state: started
+    delay: 5
+    connect_timeout: 15
+    timeout: 300

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eux -o pipefail
+
+# pull the image before so we dont first remove the container and then pull
+docker pull prom/mysqld-exporter:"{{ mysql_exporter_version }}"
+
+docker rm -f -v mysql_exporter || :
+
+docker run --rm --name=mysql_exporter \
+	-p 9104:"{{ mysql_exporter_server_port }}" \
+	-e DATA_SOURCE_NAME='{{ mysql_exporter_Datasource }}' \
+   prom/mysqld-exporter:"{{ mysql_exporter_version }}"

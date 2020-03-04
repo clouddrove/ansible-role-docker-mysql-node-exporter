@@ -1,0 +1,20 @@
+---
+# handlers for ansible-role-docker-mysql_exporter
+
+- name: restart mysql_exporter
+  service:
+    name: mysql_exporter
+    state: restarted
+    enabled: true
+
+- name: start mysql_exporter
+  service:
+    name: mysql_exporter
+    state: started
+    enabled: true
+
+- name: reload mysql_exporter
+  service:
+    name: mysql_exporter
+    state: reloaded
+    enabled: true
