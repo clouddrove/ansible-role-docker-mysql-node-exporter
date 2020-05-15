@@ -20,6 +20,7 @@
   service:
     name: mysql_exporter
     state: restarted
+    enabled: true
   changed_when: false
 
 - name: wait for mysql exporter to become ready
