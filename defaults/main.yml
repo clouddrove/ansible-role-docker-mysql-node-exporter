@@ -10,4 +10,4 @@ mysql_port: 3306
 mysql_ip: "{{ PrivateIp }}"
 mysql_user: ""
 mysql_pass: ""
-mysql_exporter_Datasource: "{{ mysql_user }}:{{ mysql_pass }}@({{ mysql_ip }}:{{ mysql_port }})/"
+mysql_exporter_datasource: "{{ mysql_user }}:{{ mysql_pass }}@({{ mysql_ip }}:{{ mysql_port }})/"
